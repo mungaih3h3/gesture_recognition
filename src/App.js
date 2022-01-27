@@ -52,15 +52,12 @@ function App() {
         ]);
         const gesture = await GE.estimate(hand[0].landmarks, 4);
         if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
-          // console.log(gesture.gestures);
-
           const confidence = gesture.gestures.map(
             (prediction) => prediction.confidence
           );
           const maxConfidence = confidence.indexOf(
             Math.max.apply(null, confidence)
           );
-          // console.log(gesture.gestures[maxConfidence].name);
           setEmoji(gesture.gestures[maxConfidence].name);
           console.log(emoji);
         }
@@ -106,7 +103,6 @@ function App() {
             height: 480,
           }}
         />
-        {/* NEW STUFF */}
         {emoji !== null ? (
           <img
             src={images[emoji]}
